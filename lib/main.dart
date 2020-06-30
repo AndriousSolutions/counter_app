@@ -1,4 +1,3 @@
-
 import 'package:counter_app/src/view.dart';
 
 import 'package:counter_app/src/controller.dart';
@@ -7,6 +6,7 @@ void main() {
   runApp(MyApp());
 }
 
+/// App
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,46 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+//      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
+class HomePage extends StatelessWidget {
+  HomePage({this.title}) : super();
+  final String title;
+
+  @override
+  Widget build(BuildContext context) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Push for Home Page',
+              style: Theme.of(context).accentTextTheme.headline6,
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                toHomePage(context);
+              },
+              tooltip: 'Home Page',
+              child: Icon(Icons.home),
+            ),
+          ],
+        ),
+      );
+
+  void toHomePage(BuildContext context) async {
+    Route route = MaterialPageRoute(
+      builder: (BuildContext context) => MyHomePage(title: title),
+      fullscreenDialog: true,
+    );
+    await Navigator.of(context).push(route);
+  }
+}
+
+/// Home Page
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -29,18 +64,23 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+/// View  (State Object)
 class _MyHomePageState extends StateMVC<MyHomePage> {
-
   // Use a constructor to register a Controller
-  _MyHomePageState(): super(_MyHomePageController()){
+  _MyHomePageState() : super(_MyHomePageController()) {
     con = controller;
   }
   _MyHomePageController con;
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   void onPressed() {
     setState(() {
-       con.onPressed();
-     });
+      con.onPressed();
+    });
   }
 
   @override
@@ -72,9 +112,8 @@ class _MyHomePageState extends StateMVC<MyHomePage> {
   }
 }
 
-class _MyHomePageController extends ControllerMVC{
-
-
+/// Controller
+class _MyHomePageController extends ControllerMVC {
 //  _MyHomePageController():super(){
 //    model = _MyHomePageModel();
 //  }
@@ -88,9 +127,8 @@ class _MyHomePageController extends ControllerMVC{
   void onPressed() => model._incrementInteger();
 }
 
-
-class _MyHomePageModel{
-
+/// Model
+class _MyHomePageModel {
   int counter = 0;
 
   int get integer => counter;
