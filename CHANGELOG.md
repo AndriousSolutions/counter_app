@@ -1,3 +1,7 @@
+## 1.2.1
+ November 15, 2020
+- Add analysis_options.yaml
+
 ## 1.2.0
  November 15, 2020
 - Allow interface switching.

@@ -19,13 +19,13 @@ class HomePageAndroidState extends StateMVC<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         leading: IconButton(
-            icon: Icon(Icons.switch_right_sharp), onPressed: con.leading),
+            icon: const Icon(Icons.switch_right_sharp), onPressed: con.leading),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            const Text(
               'You have pushed the button this many times:',
             ),
             Text(
@@ -43,7 +43,7 @@ class HomePageAndroidState extends StateMVC<HomePage> {
           });
         },
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

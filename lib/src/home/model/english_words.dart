@@ -30,7 +30,7 @@ class Model extends ControllerMVC {
 
   void build(int i) => words.build(i);
 
-  Iterable<Widget> tiles({TextStyle style = const TextStyle(fontSize: 25.0)}) =>
+  Iterable<Widget> tiles({TextStyle style = const TextStyle(fontSize: 25)}) =>
       words.saved.map(
         (WordPair pair) {
           return ListTile(
@@ -61,7 +61,7 @@ class _EnglishWords {
   int _index;
 
   void build(int i) {
-    _index = (i ~/ 2);
+    _index = i ~/ 2;
     if (_index >= _suggestions.length) {
       _suggestions.addAll(generateWordPairs().take(10));
     }
@@ -70,7 +70,7 @@ class _EnglishWords {
   WordPair get current => _suggestions[_index];
 
   Icon get icon {
-    bool alreadySaved = _saved.contains(_suggestions[_index]);
+    final bool alreadySaved = _saved.contains(_suggestions[_index]);
     return Icon(
       alreadySaved ? Icons.favorite : Icons.favorite_border,
       color: alreadySaved ? Colors.red : null,
@@ -78,9 +78,11 @@ class _EnglishWords {
   }
 
   void onTap(int i) {
-    final int index = (i ~/ 2);
+    final int index = i ~/ 2;
     final WordPair pair = _suggestions[index];
-    if (pair == null) return;
+    if (pair == null) {
+      return;
+    }
     if (_saved.contains(_suggestions[index])) {
       _saved.remove(pair);
     } else {

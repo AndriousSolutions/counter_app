@@ -7,7 +7,7 @@ class MyView extends AppState {
       : super(
           debugShowCheckedModeBanner: false,
           switchUI: Prefs.getBool('switchUI'),
-          home: HomePage(),
+          home: const HomePage(),
         );
   static MyView _this;
 

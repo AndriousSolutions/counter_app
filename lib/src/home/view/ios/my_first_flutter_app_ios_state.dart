@@ -8,16 +8,18 @@ import 'package:counter_app/src/home/model/english_words.dart';
 
 class RandomWordsiOS extends StateMVC<HomePage> {
   //
-  RandomWordsiOS(): super(Controller()){
+  RandomWordsiOS() : super(Controller()) {
     con = controller;
   }
   Controller con;
 
+  @override
   void initState() {
     super.initState();
     add(widget.model);
     model = widget.model;
   }
+
   Model model;
 
   @override
@@ -27,18 +29,23 @@ class RandomWordsiOS extends StateMVC<HomePage> {
         slivers: <Widget>[
           CupertinoSliverNavigationBar(
             largeTitle: Text(widget.title),
-            leading: CupertinoButton(child: Icon(Icons.switch_left_sharp), onPressed: con.leading),
-            trailing:
-            CupertinoButton(child: Icon(Icons.list), onPressed: _pushSaved),
+            leading: CupertinoButton(
+              onPressed: con.leading,
+              child: const Icon(Icons.switch_left_sharp),
+            ),
+            trailing: CupertinoButton(
+              onPressed: _pushSaved,
+              child: const Icon(Icons.list),
+            ),
           ),
           SliverSafeArea(
             top: false,
             minimum: const EdgeInsets.only(top: 8),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, i) {
+                (context, i) {
                   if (i.isOdd) {
-                    return Divider();
+                    return const Divider();
                   }
                   model.build(i);
                   return _CupertinoListTile(
@@ -75,7 +82,7 @@ class RandomWordsiOS extends StateMVC<HomePage> {
           return CupertinoPageScaffold(
             child: CustomScrollView(
               slivers: <Widget>[
-                CupertinoSliverNavigationBar(
+                const CupertinoSliverNavigationBar(
                   largeTitle: Text('Saved Suggestions'),
                 ),
                 SliverSafeArea(
@@ -83,9 +90,9 @@ class RandomWordsiOS extends StateMVC<HomePage> {
                   minimum: const EdgeInsets.only(top: 8),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
-                          (context, i) {
+                      (context, i) {
                         if (i.isOdd) {
-                          return Divider();
+                          return const Divider();
                         }
                         it.moveNext();
                         return _CupertinoListTile(
@@ -152,7 +159,7 @@ class _StatefulStateCupertino extends State<_CupertinoListTile> {
           Row(
             children: <Widget>[
               leading,
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: columnChildren(context),
@@ -166,20 +173,21 @@ class _StatefulStateCupertino extends State<_CupertinoListTile> {
   }
 
   List<Widget> columnChildren(BuildContext context) {
-    List<Widget> children = List();
+    final List<Widget> children = []; // was List();
 //    bool isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
-    Widget title = widget.title != null
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final Widget title = widget.title != null
         ? Text(
-      widget.title,
-      style: TextStyle(
-          fontSize: 25.0, color: isDark ? Colors.white : Colors.black),
-    )
+            widget.title,
+            style: TextStyle(
+                fontSize: 25, color: isDark ? Colors.white : Colors.black),
+          )
         : const SizedBox();
     children.add(title);
-    if (widget.subtitle != null)
+    if (widget.subtitle != null) {
       children.add(Text(widget.subtitle,
-          style: TextStyle(color: CupertinoColors.systemGrey)));
+          style: const TextStyle(color: CupertinoColors.systemGrey)));
+    }
     return children;
   }
 }

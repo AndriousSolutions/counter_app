@@ -13,6 +13,7 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
   }
   Controller con;
 
+  @override
   void initState() {
     super.initState();
     add(widget.model);
@@ -27,20 +28,22 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         leading: IconButton(
-            icon: Icon(Icons.switch_right_sharp), onPressed: con.leading),
+            icon: const Icon(Icons.switch_right_sharp), onPressed: con.leading),
         actions: [
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved),
         ],
       ),
       body: ListView.builder(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16),
           itemBuilder: (context, i) {
-            if (i.isOdd) return Divider();
+            if (i.isOdd) {
+              return const Divider();
+            }
             model.build(i);
             return ListTile(
               title: Text(
                 model.current.asPascalCase,
-                style: const TextStyle(fontSize: 25.0),
+                style: const TextStyle(fontSize: 25),
               ),
               trailing: model.icon,
               onTap: () {
@@ -68,7 +71,7 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
 
           return Scaffold(
             appBar: AppBar(
-              title: Text('Saved Suggestions'),
+              title: const Text('Saved Suggestions'),
             ),
             body: ListView(children: divided),
           );
