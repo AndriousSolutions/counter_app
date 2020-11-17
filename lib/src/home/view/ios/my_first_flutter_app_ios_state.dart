@@ -48,7 +48,7 @@ class RandomWordsiOS extends StateMVC<HomePage> {
                     return const Divider();
                   }
                   model.build(i);
-                  return _CupertinoListTile(
+                  return CupertinoListTile(
                     title: model.current.asPascalCase,
                     trailing: model.icon,
                     onTap: () {
@@ -74,11 +74,8 @@ class RandomWordsiOS extends StateMVC<HomePage> {
       CupertinoPageRoute<void>(
         builder: (BuildContext context) {
           final Iterable<Widget> tiles = model.tiles();
-          final List<Widget> divided = ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList();
-          final Iterator<Widget> it = divided.iterator;
+          final Iterator<Widget> it = tiles.iterator;
+          it.moveNext();
           return CupertinoPageScaffold(
             child: CustomScrollView(
               slivers: <Widget>[
@@ -91,15 +88,11 @@ class RandomWordsiOS extends StateMVC<HomePage> {
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, i) {
-                        if (i.isOdd) {
-                          return const Divider();
-                        }
+                        final tile = it.current;
                         it.moveNext();
-                        return _CupertinoListTile(
-                          title: model.current.asPascalCase,
-                        );
+                        return tile;
                       },
-                      childCount: divided.length,
+                      childCount: tiles.length,
                     ),
                   ),
                 )
@@ -114,8 +107,8 @@ class RandomWordsiOS extends StateMVC<HomePage> {
 
 /// Cupertino needs a ListTile equivalent
 /// https://github.com/flutter/flutter/issues/50668
-class _CupertinoListTile extends StatefulWidget {
-  const _CupertinoListTile({
+class CupertinoListTile extends StatefulWidget {
+  const CupertinoListTile({
     Key key,
     this.leading,
     this.title,
@@ -132,7 +125,7 @@ class _CupertinoListTile extends StatefulWidget {
   _StatefulStateCupertino createState() => _StatefulStateCupertino();
 }
 
-class _StatefulStateCupertino extends State<_CupertinoListTile> {
+class _StatefulStateCupertino extends State<CupertinoListTile> {
   @override
   Widget build(BuildContext context) {
     Widget leading;

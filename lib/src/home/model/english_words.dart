@@ -33,12 +33,18 @@ class Model extends ControllerMVC {
   Iterable<Widget> tiles({TextStyle style = const TextStyle(fontSize: 25)}) =>
       words.saved.map(
         (WordPair pair) {
-          return ListTile(
-            title: Text(
-              pair.asPascalCase,
-              style: style,
-            ),
-          );
+          Widget widget;
+          if (App.useCupertino) {
+            widget = CupertinoListTile(title: pair.asPascalCase);
+          } else {
+            widget = ListTile(
+              title: Text(
+                pair.asPascalCase,
+                style: style,
+              ),
+            );
+          }
+          return widget;
         },
       );
 

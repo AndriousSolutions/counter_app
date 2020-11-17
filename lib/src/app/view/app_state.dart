@@ -1,13 +1,13 @@
 import 'package:counter_app/src/view.dart';
 
-//           home: HomePage(key: UniqueKey()),
+// This is the 'View' of the application. The 'look and feel' of the app.
 class MyView extends AppState {
   factory MyView() => _this ??= MyView._();
   MyView._()
       : super(
           debugShowCheckedModeBanner: false,
           switchUI: Prefs.getBool('switchUI'),
-          home: const HomePage(),
+          home: HomePage(),
         );
   static MyView _this;
 

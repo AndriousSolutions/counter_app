@@ -5,7 +5,7 @@ import 'package:counter_app/src/home/view/my_home.dart';
 
 import 'package:counter_app/src/controller.dart';
 
-/// View
+// The View for the Material design interface.
 class HomePageAndroidState extends StateMVC<HomePage> {
   // Constructor registers a Controller
   HomePageAndroidState() : super(Controller()) {
@@ -36,7 +36,7 @@ class HomePageAndroidState extends StateMVC<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        //        onPressed: con.onPressed
+//                onPressed: con.onPressed,
         onPressed: () {
           setState(() {
             con.onPressed();

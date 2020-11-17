@@ -1,3 +1,8 @@
+## 1.3.0
+ November 16, 2020
+- Removed analysis_options.yaml
+- iOS version of the Counter interface
+
 ## 1.2.1
  November 15, 2020
 - Add analysis_options.yaml

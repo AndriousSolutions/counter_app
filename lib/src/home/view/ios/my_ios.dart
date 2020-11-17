@@ -60,28 +60,44 @@ class _HomeScreenState extends StateMVC<_HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 56, // in logical pixels
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            con.data,
-//            style: Theme.of(context).textTheme.headline4,
-          ),
-          CupertinoButton(
-            onPressed: () {
-              setState(() {
-                con.onPressed();
-              });
-            },
-            child: const Icon(Icons.add),
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Column(
+            children: [
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(con.data),
+            ],
+          )
+        ]),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+                // height: MediaQuery.of(context).size.height -
+                //     (MediaQuery.of(context).size.height / 1.8),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: App.themeData.primaryColor,
+                ),
+                //               alignment: Alignment.bottomRight,
+                child: CupertinoButton(
+                  onPressed: () {
+                    setState(() {
+                      con.onPressed();
+                    });
+                  },
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ))
+          ],
+        ),
+      ],
     );
   }
 }

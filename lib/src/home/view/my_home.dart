@@ -1,8 +1,6 @@
 
 import 'package:counter_app/src/view.dart';
 
-import 'package:counter_app/src/controller.dart';
-
 /// Home Page
 class HomePage extends StatefulWidget {
   const HomePage({Key key, this.title = 'Flutter Demo Home Page'})
@@ -10,5 +8,6 @@ class HomePage extends StatefulWidget {
   final String title;
   @override
   State createState() =>
+      // ignore: no_logic_in_create_state
       App.useMaterial ? HomePageAndroidState() : HomePageiOS();
 }
