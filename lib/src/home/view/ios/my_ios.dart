@@ -34,7 +34,7 @@ class HomePageiOS extends StateMVC<HomePage> {
             if (index == 0) {
               widget = const _HomeScreen();
             } else if (index == 1) {
-              widget = null;
+              widget = Container();
             }
             return widget;
           },
@@ -85,7 +85,8 @@ class _HomeScreenState extends StateMVC<_HomeScreen> {
                 ),
                 //               alignment: Alignment.bottomRight,
                 child: CupertinoButton(
-                  onPressed: () {
+                //  onPressed: con.onPressed,
+                onPressed: () {
                     setState(() {
                       con.onPressed();
                     });

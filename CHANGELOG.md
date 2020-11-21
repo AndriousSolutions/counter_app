@@ -1,3 +1,10 @@
+## 1.3.1
+ November 21, 2020
+- Empty Container to the 'Settings' iOS bottom bar.
+- model.current.asPascalCase to model.data
+- trailing => icon;
+- Removed factory from class, MyApp and MyView
+
 ## 1.3.0
  November 16, 2020
 - Removed analysis_options.yaml

@@ -15,8 +15,11 @@ class Model extends ControllerMVC {
   _EnglishWords words;
   int _counter;
 
-  // Supply 'data' to a Text widget
+  // Supply 'data' to a Text widget for the Counter app.
   String get data => words.suggestions[_counter].asPascalCase;
+
+  // data for the name generator app.
+//  String get data => words.current.asPascalCase;
 
   void onPressed() => words.build(_counter++);
 
@@ -27,6 +30,8 @@ class Model extends ControllerMVC {
   WordPair get current => words.current;
 
   Icon get icon => words.icon;
+
+  Widget get trailing => icon;
 
   void build(int i) => words.build(i);
 
@@ -48,11 +53,11 @@ class Model extends ControllerMVC {
         },
       );
 
-  void onTap(int i) => words.onTap(i);
+  // void onTap(int i) => words.onTap(i);
 
-  // void onTap(int i) => setState(() {
-  //       words.onTap(i);
-  //     });
+  void onTap(int i) => setState(() {
+        words.onTap(i);
+      });
 }
 
 class _EnglishWords {

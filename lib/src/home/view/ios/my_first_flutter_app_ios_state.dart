@@ -51,14 +51,14 @@ class RandomWordsiOS extends StateMVC<HomePage> {
                   return CupertinoListTile(
                     title: model.current.asPascalCase,
                     trailing: model.icon,
+                    // onTap: () {
+                    //   model.onTap(i);
+                    // },
                     onTap: () {
                       setState(() {
                         model.onTap(i);
                       });
                     },
-                    // onTap: () {
-                    //   model.onTap(i);
-                    // },
                   );
                 },
               ),

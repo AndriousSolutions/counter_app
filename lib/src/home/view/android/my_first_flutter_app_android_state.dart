@@ -16,6 +16,7 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
   @override
   void initState() {
     super.initState();
+    // registered with the State object.
     add(widget.model);
     model = widget.model;
   }
@@ -42,18 +43,18 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
             model.build(i);
             return ListTile(
               title: Text(
-                model.current.asPascalCase,
+                model.data,
                 style: const TextStyle(fontSize: 25),
               ),
-              trailing: model.icon,
-              onTap: () {
-                setState(() {
-                  model.onTap(i);
-                });
-              },
+              trailing: model.trailing,
               // onTap: () {
-              //   model.onTap(i);
+              //   setState(() {
+              //     model.onTap(i);
+              //   });
               // },
+              onTap: () {
+                model.onTap(i);
+              },
             );
           }),
     );

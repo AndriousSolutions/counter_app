@@ -5,10 +5,11 @@
 // You can see 'at a glance' this Controller 'talks to' the Model.
 import 'package:counter_app/src/model.dart';
 
-import 'package:counter_app/src/controller.dart';
-
 // You can see 'at a glance' this Controller also 'talks to' the interface (View).
 import 'package:counter_app/src/view.dart';
+
+import 'package:counter_app/src/controller.dart';
+
 
 /// extends 'ControllerMVC' so if added to a State object
 /// can 'talk to' the View. (i.e. issue a setState() funciton call)

@@ -12,6 +12,6 @@ class HomePage extends StatefulWidget {
   final String title;
   @override
   State createState() =>
+      // ignore: no_logic_in_create_state
       App.useMaterial ? RandomWordsAndroid() : RandomWordsiOS();
 }
-
