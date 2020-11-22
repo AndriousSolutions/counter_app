@@ -1,3 +1,7 @@
+## 1.3.2
+ November 21, 2020
+- Registered the State object in the build() function.
+
 ## 1.3.1
  November 21, 2020
 - Empty Container to the 'Settings' iOS bottom bar.

@@ -16,14 +16,15 @@ class RandomWordsiOS extends StateMVC<HomePage> {
   @override
   void initState() {
     super.initState();
-    add(widget.model);
     model = widget.model;
   }
-
+  // The 'data source' for the app.
   Model model;
 
   @override
   Widget build(BuildContext context) {
+    // Register the 'controller' again and again if switched by UI.
+    add(widget.model);
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: <Widget>[
@@ -51,14 +52,14 @@ class RandomWordsiOS extends StateMVC<HomePage> {
                   return CupertinoListTile(
                     title: model.current.asPascalCase,
                     trailing: model.icon,
-                    // onTap: () {
-                    //   model.onTap(i);
-                    // },
                     onTap: () {
-                      setState(() {
-                        model.onTap(i);
-                      });
+                      model.onTap(i);
                     },
+                    // onTap: () {
+                    //   setState(() {
+                    //     model.onTap(i);
+                    //   });
+                    // },
                   );
                 },
               ),

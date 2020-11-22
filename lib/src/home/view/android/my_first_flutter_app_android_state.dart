@@ -16,8 +16,6 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
   @override
   void initState() {
     super.initState();
-    // registered with the State object.
-    add(widget.model);
     model = widget.model;
   }
 
@@ -25,6 +23,8 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // registered with the State object.
+    add(widget.model);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
