@@ -24,7 +24,7 @@ class RandomWordsiOS extends StateMVC<HomePage> {
   @override
   Widget build(BuildContext context) {
     // Register the 'controller' again and again if switched by UI.
-    add(widget.model);
+    add(model);
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: <Widget>[
@@ -50,8 +50,8 @@ class RandomWordsiOS extends StateMVC<HomePage> {
                   }
                   model.build(i);
                   return CupertinoListTile(
-                    title: model.current.asPascalCase,
-                    trailing: model.icon,
+                    title: model.title,
+                    trailing: model.trailing,
                     onTap: () {
                       model.onTap(i);
                     },

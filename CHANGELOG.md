@@ -1,3 +1,7 @@
+## 1.3.3
+ November 23, 2020
+- Expanded widget in iOS interface
+
 ## 1.3.2
  November 21, 2020
 - Registered the State object in the build() function.

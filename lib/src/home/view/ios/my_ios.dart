@@ -60,45 +60,42 @@ class _HomeScreenState extends StateMVC<_HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Column(
-            children: [
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(con.data),
-            ],
-          )
-        ]),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(12),
+        child: Column(
           children: [
-            Container(
-                // height: MediaQuery.of(context).size.height -
-                //     (MediaQuery.of(context).size.height / 1.8),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: App.themeData.primaryColor,
-                ),
-                //               alignment: Alignment.bottomRight,
-                child: CupertinoButton(
-                //  onPressed: con.onPressed,
-                onPressed: () {
-                    setState(() {
-                      con.onPressed();
-                    });
-                  },
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
+            Expanded(child: Container(),),
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(con.data),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: App.themeData.primaryColor,
                   ),
-                ))
+                  child: CupertinoButton(
+                    //  onPressed: con.onPressed,
+                    onPressed: () {
+                      setState(() {
+                        con.onPressed();
+                      });
+                    },
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
-      ],
+      ),
     );
   }
 }

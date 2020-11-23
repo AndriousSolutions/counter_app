@@ -24,7 +24,7 @@ class RandomWordsAndroid extends StateMVC<HomePage> {
   @override
   Widget build(BuildContext context) {
     // registered with the State object.
-    add(widget.model);
+    add(model);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),

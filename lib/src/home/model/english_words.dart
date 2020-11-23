@@ -29,6 +29,8 @@ class Model extends ControllerMVC {
 
   WordPair get current => words.current;
 
+  String get title => current.asPascalCase;
+
   Icon get icon => words.icon;
 
   Widget get trailing => icon;
